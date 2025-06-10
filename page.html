@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniPaw City | Pet-Friendly Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Nunito:wght@300;400;600&family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f0f0f;
+            --darker-bg: #080808;
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffd166;
+            --text: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --card-bg: #1a1a1a;
+            --navbar-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            cursor: default;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-family: 'Righteous', cursive;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--navbar-height);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--navbar-height);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 107, 107, 0.1) 0%, rgba(15, 15, 15, 0.9) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: -50px;
+            bottom: 0;
+            width: 50%;
+            max-width: 700px;
+            z-index: 1;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--darker-bg);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Impact Stories */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .story-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .story-image {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ffd166);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        .story-content h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .story-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Pet Carousel */
+        .pet-carousel {
+            background: var(--darker-bg);
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pet-card {
+            scroll-snap-align: start;
+            flex: 0 0 300px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pet-image {
+            height: 250px;
+            width: 100%;
+            background: linear-gradient(45deg, #4ecdc4, #1a936f);
+            position: relative;
+        }
+
+        .pet-info {
+            padding: 20px;
+        }
+
+        .pet-info h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .pet-info p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .pet-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(78, 205, 196, 0.2);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--darker-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-question.active + .faq-answer {
+            padding: 20px 25px;
+            max-height: 500px;
+        }
+
+        /* Volunteer Form */
+        .volunteer {
+            background: var(--darker-bg);
+        }
+
+        .form-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+        }
+
+        .form-image {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .form-content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        /* Fix for select dropdown text color */
+        .form-group select option {
+            background: var(--darker-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .chat-window.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .chat-header {
+            background: var(--primary);
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            background: rgba(255, 255, 255, 0.1);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .user-message {
+            background: var(--primary);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-input {
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--text);
+            font-family: inherit;
+        }
+
+        .send-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .credit {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .credit a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* New Sections */
+        /* Events Section */
+        .events {
+            background: var(--darker-bg);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--secondary), #1a936f);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-content h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--dark-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--darker-bg);
+        }
+
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.05);
+            font-family: serif;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Stories */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .modal-image {
+            height: 300px;
+            width: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Visual Enhancements */
+        .paw-prints {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .paw-print {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--accent);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes pawFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .paw-print {
+            animation: pawFloat 8s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+                padding: 20px;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .form-container {
+                flex-direction: column;
+            }
+            
+            .form-image {
+                height: 200px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .chat-window {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <i class="fas fa-paw"></i>
+                <span class="logo-text">AniPaw City</span>
+            </a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#stories">Stories</a>
+                <a href="#events">Events</a>
+                <a href="#pets">Adopt</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
+                <a href="#volunteer">Volunteer</a>
+            </div>
+            <a href="#volunteer" class="cta-button">Join Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="paw-prints">
+            <!-- Paw prints will be added with JavaScript -->
+        </div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Creating a <span>Pet-Friendly Paradise</span></h1>
+                <p>Join our movement to transform our city into a haven for pets and their humans. Together we can build a community where every paw is welcome. We're working with local businesses, parks, and residents to make our city the most pet-friendly in the region.</p>
+                <div class="hero-buttons">
+                    <a href="#volunteer" class="cta-button pulse">Join the Movement</a>
+                    <a href="#pets" class="cta-button secondary-button">Adopt a Friend</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>About AniPaw City</h2>
+                <p>Discover our mission to create a truly pet-friendly urban environment</p>
+            </div>
+            
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h3>Our Vision for a Pet-Friendly Future</h3>
+                    <p>Founded in 2018, AniPaw City began as a grassroots movement to transform urban spaces into welcoming environments for pets and their owners. We believe that a city that embraces pets is a city that embraces community, compassion, and quality of life for all residents.</p>
+                    <p>Through strategic partnerships with local businesses, government agencies, and community organizations, we've implemented innovative solutions like pet waste stations, designated pet zones in parks, and pet-friendly patio certifications for restaurants.</p>
+                    <p>Our team of dedicated volunteers works tirelessly to advocate for policies that benefit pets and their owners, organize community events, and provide resources for responsible pet ownership.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">42+</div>
+                            <div class="stat-label">Pet-Friendly Parks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Business Partners</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2,300+</div>
+                            <div class="stat-label">Pets Helped</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pet-friendly community">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="stories" id="stories">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Impact Stories</h2>
+                <p>Discover how our community is making a difference in the lives of pets and their humans</p>
+            </div>
+            
+            <div class="stories-grid">
+                <div class="story-card fade-in">
+                    <div class="story-image">
+                        <i class="fas fa-paw" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; color: white;"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Paws in the Park</h3>
+                        <p>We transformed an abandoned lot into a vibrant dog park with agility equipment and shaded areas. Now over 200 dogs visit daily with their owners, creating a thriving community hub.</p>
+                        <button class="cta-button read-more" style="padding: 8px 20px; font-size: 0.9rem;" data-story="1">Read More</button>
+                    </div>
+                </div>
+                
+                <div class="story-card fade-in">
+                    <div class="story-image">
+                        <i class="fas fa-home" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; color: white;"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Foster to Forever</h3>
+                        <p>Our foster program has helped over 150 pets find their forever homes in the last year. Meet some of our success stories and their happy families who've transformed lives through adoption.</p>
+                        <button class="cta-button read-more" style="padding: 8px 20px; font-size: 0.9rem;" data-story="2">Read More</button>
+                    </div>
+                </div>
+                
+                <div class="story-card fade-in">
+                    <div class="story-image">
+                        <i class="fas fa-utensils" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; color: white;"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Pet-Friendly Dining</h3>
+                        <p>We partnered with 25 local restaurants to create pet-friendly patio spaces, complete with water bowls and special pet menus. These establishments now report a 30% increase in weekend traffic.</p>
+                        <button class="cta-button read-more" style="padding: 8px 20px; font-size: 0.9rem;" data-story="3">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Upcoming Events</h2>
+                <p>Join us for these pet-friendly community gatherings</p>
+            </div>
+            
+            <div class="events-grid">
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-dog" style="font-size: 4rem; color: white;"></i>
+                        <div class="event-date">June 15</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Paws in the Park Festival</h3>
+                        <p>Join us for our annual festival with agility courses, pet vendors, costume contests, and adoption opportunities!</p>
+                        <div class="event-details">
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i> 10:00 AM - 4:00 PM
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i> Central Park
+                            </div>
+                        </div>
+                        <button class="cta-button">RSVP Now</button>
+                    </div>
+                </div>
+                
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-cat" style="font-size: 4rem; color: white;"></i>
+                        <div class="event-date">June 22</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Kitten Shower & Adoption Fair</h3>
+                        <p>Celebrate kitten season with us! Learn about fostering, meet adoptable kittens, and donate supplies.</p>
+                        <div class="event-details">
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i> 1:00 PM - 5:00 PM
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i> Community Center
+                            </div>
+                        </div>
+                        <button class="cta-button">RSVP Now</button>
+                    </div>
+                </div>
+                
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-paw" style="font-size: 4rem; color: white;"></i>
+                        <div class="event-date">July 5</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Yappy Hour Social</h3>
+                        <p>Bring your pup to this social event at Bark & Brew. Enjoy drinks, treats, and make new furry friends!</p>
+                        <div class="event-details">
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i> 6:00 PM - 8:00 PM
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i> Bark & Brew
+                            </div>
+                        </div>
+                        <button class="cta-button">RSVP Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Adoption Carousel -->
+    <section class="pet-carousel" id="pets">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Meet Our Friends</h2>
+                <p>These amazing pets are looking for their forever homes. Could you be their perfect match?</p>
+            </div>
+            
+            <div class="carousel-container fade-in">
+                <div class="carousel" id="pet-carousel">
+                    <div class="pet-card">
+                        <div class="pet-image">
+                            <i class="fas fa-dog" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: white;"></i>
+                        </div>
+                        <div class="pet-info">
+                            <h3>Kiba</h3>
+                            <p><strong>Breed:</strong> Shiba Inu</p>
+                            <p><strong>Age:</strong> 2 years</p>
+                            <p><strong>Personality:</strong> Playful, loyal, and loves adventures</p>
+                            <div class="pet-tags">
+                                <span class="tag">House-trained</span>
+                                <span class="tag">Good with kids</span>
+                                <span class="tag">Needs daily exercise</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <div class="pet-image">
+                            <i class="fas fa-cat" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: white;"></i>
+                        </div>
+                        <div class="pet-info">
+                            <h3>Luna</h3>
+                            <p><strong>Breed:</strong> Calico</p>
+                            <p><strong>Age:</strong> 1.5 years</p>
+                            <p><strong>Personality:</strong> Curious, affectionate, and loves naps</p>
+                            <div class="pet-tags">
+                                <span class="tag">Indoor cat</span>
+                                <span class="tag">Lap cat</span>
+                                <span class="tag">Loves toys</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <div class="pet-image">
+                            <i class="fas fa-dog" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: white;"></i>
+                        </div>
+                        <div class="pet-info">
+                            <h3>Rocky</h3>
+                            <p><strong>Breed:</strong> Terrier Mix</p>
+                            <p><strong>Age:</strong> 4 years</p>
+                            <p><strong>Personality:</strong> Energetic, friendly, and loves to play fetch</p>
+                            <div class="pet-tags">
+                                <span class="tag">Active companion</span>
+                                <span class="tag">Loves water</span>
+                                <span class="tag">Good with dogs</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pet-card">
+                        <div class="pet-image">
+                            <i class="fas fa-cat" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; color: white;"></i>
+                        </div>
+                        <div class="pet-info">
+                            <h3>Mochi</h3>
+                            <p><strong>Breed:</strong> Scottish Fold</p>
+                            <p><strong>Age:</strong> 3 months</p>
+                            <p><strong>Personality:</strong> Playful kitten, curious about everything</p>
+                            <div class="pet-tags">
+                                <span class="tag">Needs playmate</span>
+                                <span class="tag">Vaccinated</span>
+                                <span class="tag">Litter trained</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Community Gallery</h2>
+                <p>See our pet-friendly community in action</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Park Playdate">
+                    <div class="gallery-overlay">
+                        <h3>Park Playdate</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Adoption Day">
+                    <div class="gallery-overlay">
+                        <h3>Adoption Day</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yappy Hour">
+                    <div class="gallery-overlay">
+                        <h3>Yappy Hour</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Training Session">
+                    <div class="gallery-overlay">
+                        <h3>Training Session</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="https://www.rd.com/wp-content/uploads/2024/06/50-Photos-of-Cute-Kittens-That-Will-Make-You-Melt_GettyImages-187144066_SSedit_FT.jpg" alt="Sleep Time">
+                    <div class="gallery-overlay">
+                        <h3>Sleep Time</h3>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pet Parade">
+                    <div class="gallery-overlay">
+                        <h3>Pet Parade</h3>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item fade-in">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGUHm63W5-6qP-dlX1xKLdW-4deyxmeUYG0Q&s" alt="Morning Walks">
+                    <div class="gallery-overlay">
+                        <h3>Morning Walks</h3>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="data:image/jpeg;base64,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" alt="Coffee Time">
+                    <div class="gallery-overlay">
+                        <h3>Coffee Time</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Community Voices</h2>
+                <p>Hear what our community members have to say</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "AniPaw City transformed our neighborhood! The new dog park has become the heart of our community. My golden retriever, Max, has made so many friends, and I've met wonderful people who share my love for pets."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Resident & Dog Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "As a restaurant owner, becoming pet-friendly certified was the best decision we made. Our patio is always busy now, especially on weekends. The training provided by AniPaw City helped our staff feel comfortable around pets."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Owner, Paws & Plates Cafe</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-content">
+                        "We adopted Luna through AniPaw City's foster program. The process was smooth and the support we received was incredible. They matched us perfectly with our new family member. We couldn't be happier!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>The Chen Family</h4>
+                            <p>Adoptive Pet Parents</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our pet-friendly initiatives</p>
+            </div>
+            
+            <div class="faq-container fade-in">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What makes a business "pet-friendly certified"?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our certification program evaluates businesses based on several criteria: providing water bowls, having pet-friendly seating areas, training staff in pet safety, offering pet treats or menu items, and maintaining a clean environment. Businesses that meet these standards receive our official certification and are listed in our pet-friendly directory.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I get involved as a volunteer?
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have multiple volunteer opportunities: event coordination, park cleanups, fostering pets, community outreach, and administrative support. No prior experience is needed - we provide training for all positions. Fill out our volunteer form to get started, and our coordinator will contact you within 48 hours to discuss options that match your interests and availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I do if I find a stray animal?
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you find a stray animal, first ensure your safety and the animal's. If the animal appears approachable, check for identification tags. If possible, contain the animal in a safe space. Contact our 24/7 animal rescue hotline at (555) PET-RESCUE. We'll dispatch a team to assist and scan for microchips. If the animal appears injured or aggressive, maintain distance and call animal control immediately.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are there pet-friendly housing options in the city?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We maintain an updated database of pet-friendly housing options. Currently, 42 apartment complexes and numerous private landlords participate in our program, offering various pet policies. We also advocate for fair pet policies and provide resources for tenants and landlords to create pet agreements that protect both parties.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the pet adoption process work?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our adoption process has four steps: 1) Complete an online application, 2) Attend a virtual orientation, 3) Schedule a meet-and-greet with the pet, and 4) Home visit (virtual or in-person). The entire process typically takes 3-7 days. We require adopters to be at least 21 years old, provide proof of address, and demonstrate the ability to care for the pet. Adoption fees cover vaccinations, spay/neuter, and microchipping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Form -->
+    <section class="volunteer" id="volunteer">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Become a Pet Advocate</h2>
+                <p>Join our team of passionate volunteers and help make our city a better place for pets and their owners</p>
+            </div>
+            
+            <div class="form-container fade-in">
+                <div class="form-image">
+                    <i class="fas fa-hands-helping" style="font-size: 5rem; color: white;"></i>
+                </div>
+                <div class="form-content">
+                    <h3 style="margin-bottom: 20px; color: var(--accent);">Volunteer Application</h3>
+                    <form id="volunteer-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Preferred Volunteer Role</label>
+                            <select id="role" required>
+                                <option value="">Select a role</option>
+                                <option value="event">Event Coordination</option>
+                                <option value="foster">Pet Fostering</option>
+                                <option value="outreach">Community Outreach</option>
+                                <option value="fundraising">Fundraising</option>
+                                <option value="education">Pet Education</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="availability">Weekly Availability (hours)</label>
+                            <input type="number" id="availability" min="1" max="40" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Previous Experience with Animals</label>
+                            <textarea id="experience" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="why">Why do you want to volunteer with us?</label>
+                            <textarea id="why" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button" id="chatbot-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <i class="fas fa-paw"></i>
+                <h3>PawBuddy Assistant</h3>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message bot-message">
+                    Hello there! I'm PawBuddy, your virtual assistant for all things pet-friendly in our city! 😊 How can I help you today? You can ask about:
+                    <br><br>
+                    🐾 Pet adoption process<br>
+                    🏢 Pet-friendly businesses<br>
+                    🏡 Housing options<br>
+                    📅 Upcoming events<br>
+                    🤝 Volunteer opportunities
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button class="send-button" id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Modal for Stories -->
+    <div class="modal" id="story-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">Paws in the Park</h2>
+                <p id="modal-subtitle">Community Transformation Success</p>
+            </div>
+            <div class="modal-image" id="modal-image">
+                <i class="fas fa-paw" style="font-size: 4rem; color: white;"></i>
+            </div>
+            <div class="modal-body">
+                <p id="modal-content">We transformed an abandoned lot into a vibrant dog park with agility equipment and shaded areas. Now over 200 dogs visit daily with their owners, creating a thriving community hub.</p>
+                <h3>The Journey</h3>
+                <p>What was once a neglected space in our city center has been transformed into a vibrant community hub. The journey began with a community survey where residents expressed a need for more pet-friendly spaces. After securing funding through local grants and crowdfunding, we partnered with landscape architects to design a space that would serve both pets and their owners.</p>
+                <h3>Features</h3>
+                <ul>
+                    <li>Separate areas for large and small dogs</li>
+                    <li>Agility equipment including tunnels, ramps, and hurdles</li>
+                    <li>Shaded seating areas with benches and picnic tables</li>
+                    <li>Water stations and dog wash area</li>
+                    <li>Community bulletin board for pet-related announcements</li>
+                </ul>
+                <h3>Impact</h3>
+                <p>Since opening, the park has become the heart of our pet-friendly community. Regular events like "Yappy Hours" and training workshops have strengthened neighborhood bonds. Local businesses have reported increased foot traffic, and the park has even hosted adoption events that found homes for 42 pets in the first three months.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AniPaw City</h3>
+                    <p>Creating a community where pets and people thrive together through advocacy, education, and community initiatives. Join us in building a truly pet-friendly urban environment.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#stories">Success Stories</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#pets">Pet Adoption</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Pet Care Guides</a></li>
+                        <li><a href="#">Training Resources</a></li>
+                        <li><a href="#">Pet-Friendly Business Directory</a></li>
+                        <li><a href="#">Community Events Calendar</a></li>
+                        <li><a href="#">Emergency Pet Services</a></li>
+                        <li><a href="#">Pet-Friendly Housing Database</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Avenue, AniCity</li>
+                        <li><i class="fas fa-phone"></i> (555) PET-LOVE</li>
+                        <li><i class="fas fa-envelope"></i> hello@anipawcity.org</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="credit">
+                <p>This website was inspired by the innovative work of <a href="https://collegetips.in/pfc/" target="_blank">Pet-Friendly City initiatives</a>. We've adapted their community-focused approach with an anime dark theme aesthetic and expanded functionality.</p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AniPaw City. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for pets and their humans.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const backToTop = document.getElementById('back-to-top');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Back to top button visibility
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Back to top functionality
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add floating paw prints to hero section
+            const pawPrints = document.querySelector('.paw-prints');
+            const pawIcons = ['🐾', '🐾', '🐾', '🐾', '🐾', '🐾', '🐾', '🐾', '🐾', '🐾'];
+            
+            pawIcons.forEach((icon, index) => {
+                const paw = document.createElement('div');
+                paw.classList.add('paw-print');
+                paw.innerHTML = icon;
+                paw.style.left = `${Math.random() * 100}%`;
+                paw.style.top = `${Math.random() * 100}%`;
+                paw.style.animationDelay = `${index * 0.5}s`;
+                paw.style.fontSize = `${Math.random() * 2 + 1}rem`;
+                paw.style.opacity = Math.random() * 0.5 + 0.2;
+                pawPrints.appendChild(paw);
+            });
+        });
+
+        // Chatbot functionality
+        document.getElementById('chatbot-toggle').addEventListener('click', function() {
+            document.getElementById('chat-window').classList.toggle('active');
+        });
+
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+            
+            if (message) {
+                // Add user message
+                addMessage(message, 'user');
+                
+                // Process and add bot response
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response, 'bot');
+                    
+                    // Scroll to bottom
+                    const chatBody = document.getElementById('chat-body');
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 500);
+                
+                // Clear input
+                userInput.value = '';
+            }
+        }
+
+        function addMessage(text, sender) {
+            const chatBody = document.getElementById('chat-body');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${sender}-message`);
+            messageDiv.textContent = text;
+            chatBody.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            const lowerMsg = message.toLowerCase();
+            
+            if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+                return "Hello there! 😊 How can I assist you today? You can ask about pet adoption, volunteering, or pet-friendly locations in our city.";
+            } else if (lowerMsg.includes('adopt') || lowerMsg.includes('pet') || lowerMsg.includes('animal')) {
+                return "Great to hear you're interested in adoption! 🐾 You can visit our 'Meet Our Friends' section to see pets available for adoption. Our process includes: 1) Online application 2) Virtual orientation 3) Meet-and-greet 4) Home visit. The entire process takes 3-7 days.";
+            } else if (lowerMsg.includes('volunteer') || lowerMsg.includes('help')) {
+                return "We'd love to have you as a volunteer! 🙌 We have opportunities in event organization, fostering, community outreach, and more. Fill out our volunteer form at the bottom of the page, and our coordinator will contact you within 48 hours to discuss options that match your interests and availability.";
+            } else if (lowerMsg.includes('event') || lowerMsg.includes('meetup')) {
+                return "We host monthly events! 🎉 Next Saturday from 10am-2pm at Central Park: Paws in the Park festival with agility courses, pet vendors, and a costume contest. Bring your pet and join the fun!";
+            } else if (lowerMsg.includes('park') || lowerMsg.includes('place') || lowerMsg.includes('location')) {
+                return "We have many pet-friendly locations! 🐕 Here are some: 1. Central Park (off-leash before 9am) 2. Riverside Dog Park 3. Paws Cafe (pet-friendly patio) 4. Barker's Bakery (pet treats) 5. Wagging Tail Bookstore. View our full directory in the Resources section.";
+            } else if (lowerMsg.includes('business') || lowerMsg.includes('store') || lowerMsg.includes('restaurant')) {
+                return "Our pet-friendly certification program evaluates businesses based on water bowls, pet seating, staff training, and cleanliness. Certified businesses display our logo and are listed in our directory. 150+ businesses are currently certified!";
+            } else if (lowerMsg.includes('house') || lowerMsg.includes('apartment') || lowerMsg.includes('rent')) {
+                return "We maintain a pet-friendly housing database with 42 apartment complexes and private landlords. Requirements vary, but most allow cats and small dogs with pet deposits. Check our Resources section for the full database and tips for discussing pets with landlords.";
+            } else if (lowerMsg.includes('emergency') || lowerMsg.includes('help') || lowerMsg.includes('stray')) {
+                return "For animal emergencies: 🚨 Call our 24/7 rescue hotline at (555) PET-RESCUE. For found strays: Contain if safe, check for ID, and call our hotline. For injured animals: Maintain distance and call animal control at (555) ANIMAL-CTRL.";
+            } else if (lowerMsg.includes('thank')) {
+                return "You're very welcome! 😊 Let me know if there's anything else I can help with!";
+            } else {
+                return "I'm here to help with pet-friendly city information! 🐾 You can ask about adoption, volunteering, events, or pet-friendly locations. If I can't answer your question, our team will respond to your email within 24 hours.";
+            }
+        }
+
+        // Form submission
+        document.getElementById('volunteer-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            alert('Thank you for your volunteer application! Our team will review your submission and contact you within 2 business days.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Pet carousel auto-scroll
+        setInterval(() => {
+            const carousel = document.getElementById('pet-carousel');
+            if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: 330, behavior: 'smooth' });
+            }
+        }, 4000);
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Add animation to stats on scroll
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue(entry.target, 0, parseInt(entry.target.textContent), 2000);
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(number => {
+            statObserver.observe(number);
+        });
+        
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + "+";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Story modal functionality
+        const modal = document.getElementById('story-modal');
+        const closeBtn = document.querySelector('.modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const modalContent = document.getElementById('modal-content');
+        const modalImage = document.getElementById('modal-image');
+        
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const storyId = this.getAttribute('data-story');
+                let title, subtitle, content, icon;
+                
+                switch(storyId) {
+                    case '1':
+                        title = "Paws in the Park";
+                        subtitle = "Community Transformation Success";
+                        content = "We transformed an abandoned lot into a vibrant dog park with agility equipment and shaded areas. Now over 200 dogs visit daily with their owners, creating a thriving community hub.";
+                        icon = '<i class="fas fa-paw" style="font-size: 4rem; color: white;"></i>';
+                        break;
+                    case '2':
+                        title = "Foster to Forever";
+                        subtitle = "Finding Loving Homes for Pets";
+                        content = "Our foster program has helped over 150 pets find their forever homes in the last year. Meet some of our success stories and their happy families who've transformed lives through adoption.";
+                        icon = '<i class="fas fa-home" style="font-size: 4rem; color: white;"></i>';
+                        break;
+                    case '3':
+                        title = "Pet-Friendly Dining";
+                        subtitle = "Creating Welcoming Spaces for Pets";
+                        content = "We partnered with 25 local restaurants to create pet-friendly patio spaces, complete with water bowls and special pet menus. These establishments now report a 30% increase in weekend traffic.";
+                        icon = '<i class="fas fa-utensils" style="font-size: 4rem; color: white;"></i>';
+                        break;
+                }
+                
+                modalTitle.textContent = title;
+                modalSubtitle.textContent = subtitle;
+                modalContent.textContent = content;
+                modalImage.innerHTML = icon;
+                modal.classList.add('active');
+            });
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        
+        document.querySelectorAll('.event-card .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const eventName = this.closest('.event-card').querySelector('h3').textContent;
+                alert(`Thank you for your RSVP to: ${eventName}! We'll send you a confirmation email with details.`);
+            });
+        });
+
+    </script>
+</body>
+</html>
